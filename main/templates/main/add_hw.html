@@ -1,0 +1,153 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Добавить ДЗ</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="{% static 'main/vendor/bootstrap/css/bootstrap.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'main/fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'main/vendor/animate/animate.css' %}">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'main/vendor/css-hamburgers/hamburgers.min.css' %}">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'main/vendor/animsition/css/animsition.min.css' %}">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'main/vendor/select2/select2.min.css' %}">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'main/vendor/daterangepicker/daterangepicker.css' %}">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'main/css/utildate.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'main/css/maindate.css' %}">
+	<link rel="stylesheet" href="{% static 'main/css/style.css' %}">
+	<link rel='stylesheet'
+		href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.css'>
+	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css'>
+	<link rel='stylesheet' href="{% static 'main/css/styledate.css' %}">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'main/css/stylenav.css' %}">
+
+
+	<style>
+		body {
+			margin: 0;
+			font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+                font-family: Ubuntu-Bold, sans-serif;
+		}
+
+
+	</style>
+
+
+</head>
+
+<body>
+
+	<div class="topnav" id="myTopnav">
+        <a href="{% url 'main' %}">Список ДЗ</a>
+        <a href="{% url 'timetable'  %}" >Расписание</a>
+        <a href="{% url 'add_hw'  %}" class="active">Добавить ДЗ</a>
+
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+            <i class="fa fa-bars"></i>
+        </a>
+    </div>
+
+	<form method="POST">
+		{% csrf_token %}
+		<div class="container-contact100">
+
+			<div class="wrap-contact100">
+				<form class="contact100-form validate-form">
+				<span class="contact100-form-title">
+					Добавить ДЗ
+				</span>
+
+					<div class="wrap-input100 validate-input" data-validate="Please enter your name">
+						<input class="input100" type="text" name="id_lesson" placeholder="Урок">
+						<span class="focus-input100"></span>
+					</div>
+
+
+
+					<div class="wrap-input100 validate-input" data-validate="Please enter your message">
+						<textarea class="input100" name="id_content" placeholder="Описание" ></textarea>
+						<span class="focus-input100"></span>
+					</div>
+					<div class="wrap-input100 validate-input" data-validate="Please enter your name">
+						<input class="input100 dateselect" type="text" name="id_deadline" placeholder="Дата дедлайна">
+						<span class="focus-input100"></span>
+					</div>
+
+					<div class="container-contact100-form-btn">
+						<button class="contact100-form-btn" type="submit">
+						<span>
+							<i class="fa fa-paper-plane-o m-r-6" aria-hidden="true"></i>
+							Добавить
+						</span>
+						</button>
+					</div>
+				</form>
+			</div>
+		</div>
+
+
+
+		<div id="dropDownSelect1"></div>
+
+		<!--===============================================================================================-->
+		<script src="{% static 'main/vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+		<!--===============================================================================================-->
+		<script src="{% static 'main/vendor/animsition/js/animsition.min.js' %}"></script>
+		<!--===============================================================================================-->
+		<script src="{% static 'main/vendor/bootstrap/js/popper.js' %}"></script>
+		<script src="{% static 'main/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+		<!--===============================================================================================-->
+		<script src="{% static 'main/vendor/select2/select2.min.js' %}"></script>
+		<!--===============================================================================================-->
+		<script src="{% static 'main/vendor/daterangepicker/moment.min.js' %}"></script>
+		<script src="{% static 'main/vendor/daterangepicker/daterangepicker.js' %}"></script>
+		<!--===============================================================================================-->
+		<script src="{% static 'main/vendor/countdowntime/countdowntime.js' %}"></script>
+		<!--===============================================================================================-->
+		<script src="{% static 'main/js/main.js' %}"></script>
+
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js'>
+		</script>
+		<script src="{% static 'main/js/script.js' %}"></script>
+
+		<script>
+			window.dataLayer = window.dataLayer || [];
+
+			function gtag() {
+				dataLayer.push(arguments);
+			}
+			gtag('js', new Date());
+
+			gtag('config', 'UA-23581568-13');
+		</script>
+
+<script>
+        /* Toggle between adding and removing the "responsive" class to topnav when the user clicks on the icon */
+        function myFunction() {
+            var x = document.getElementById("myTopnav");
+            if (x.className === "topnav") {
+                x.className += " responsive";
+            } else {
+                x.className = "topnav";
+            }
+        }
+    </script>
+
+
+
+</body>
+</html>

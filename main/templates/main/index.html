@@ -1,0 +1,116 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Список ДЗ</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'main/css/stylenav.css' %}">
+
+
+
+	<style>
+		body {
+			margin: 0;
+            font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+                font-family: Ubuntu-Bold, sans-serif;
+		}
+        .homework{
+            margin-top: 30px;
+            margin-left: 35px
+        }
+
+    .content{
+        display: flex;
+    }
+        @media screen and (max-width: 1400px){
+        .content{
+            display: block;
+        }
+        }
+a.delete{
+
+        text-decoration: none;
+
+
+
+                    text-align: right;
+
+
+    color: #c0392b;
+    font-family: Arial;
+
+    font-weight: 700;
+
+        }
+        a.delete:hover{
+            color: #ef1b06;
+            font-family: Arial;
+
+    font-weight: 700;
+        }
+
+	</style>
+
+
+</head>
+
+<body>
+
+	<div class="topnav" id="myTopnav">
+        <a href="{% url 'main' %}" class="active">Список ДЗ</a>
+        <a href="{% url 'timetable'  %}" >Расписание</a>
+        <a href="{% url 'add_hw'  %}">Добавить ДЗ</a>
+
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+            <i class="fa fa-bars"></i>
+        </a>
+    </div>
+
+	<div class="content">
+{% for h in homework%}
+
+        <div class="card homework text-center" style="width: 18rem;">
+
+  <div class="card-body">
+    <h3 class="card-title ctitle">{{h.lesson}}</h3>
+    <p class="card-text">{{h.content}}</p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Дедлайн: {{h.deadline}}</li>
+  </ul>
+
+<a class="delete" href="delete/{{h.pk}}">Удалить</a>
+</div>
+
+{% endfor %}
+    </div>
+<script>
+		window.dataLayer = window.dataLayer || [];
+
+		function gtag() {
+			dataLayer.push(arguments);
+		}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-23581568-13');
+	</script>
+<script>
+        /* Toggle between adding and removing the "responsive" class to topnav when the user clicks on the icon */
+        function myFunction() {
+            var x = document.getElementById("myTopnav");
+            if (x.className === "topnav") {
+                x.className += " responsive";
+            } else {
+                x.className = "topnav";
+            }
+        }
+    </script>
+</body>
+</html>
